@@ -1,10 +1,10 @@
 # Game Ping-Pong
 
-from tkinter import *
+from tkinter import * # importando tudo do tkinter
 import random
 import time
 
-level = int(input("Qual nível você gostaria de jogar? 1/2/3/4/5 \n"))
+level = int(input("Qual nível você gostaria de jogar? 1/2/3/4/5 \n")) #salva entrada de dados em level
 length = 500/level
 
 
@@ -22,9 +22,9 @@ root.update()
 count = 0
 lost = False
 
-class Bola:
-    def __init__(self, canvas, Barra, color):
-        self.canvas = canvas
+class Bola: #inicio da classe
+    def __init__(self, canvas, Barra, color): # construtor Bola
+        self.canvas = canvas # atribui a canvas o valos de canvas recebido no parâmetro
         self.Barra = Barra
         self.id = canvas.create_oval(0, 0, 15, 15, fill=color)
         self.canvas.move(self.id, 245, 200)
