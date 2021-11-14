@@ -9,24 +9,35 @@ class Calculator():
     def __init__(self):
         pass
 
-    def add(digit1, digit2):
+    def add(self, digit1, digit2):
         result = digit1 + digit2
-        return (result)
+        return result
 
-    def subtract(digit1, digit2):
+    def subtract(self, digit1, digit2):
         result = digit1 - digit2
-        return (result)
+        return result
 
-    def multiply(digit1, digit2):
-        return (digit1 * digit2)
+    def multiply(self, digit1, digit2):
+        result = digit1 * digit2
+        return result
 
-    def divide(digit1, digit2):
-        return (digit2 / digit2)
+    def divide(self, digit1, digit2):
+        result = digit1 / digit2
+        return result
+
+    def getOperator(self, option):
+        operators = {
+                1: '+',
+                2: '-',
+                3: '*',
+                4: '/'
+                }
+        return operators.get(option)
 
 
 screen = Template("""
 ''''''''''''''''''''''''''''''
-$n1 $op $n2
+$n1 $op $n2 = $result
 ''''''''''''''''''''''''''''''
 Digite:
     [1] Soma
@@ -37,83 +48,86 @@ Digite:
 $commands
 """)
 
-system('clear')
-
 while True:
+
+    system('clear')
+
     option_user = input(screen.substitute(
-        n1='', op='', n2='', commands='Escolha uma opção.'
-    ))
-    print(option_user)
-    print(type(option_user))
+            n1='',
+            op='',
+            n2='',
+            commands='Escolha uma opção.',
+            result=''
+        ))
 
     if option_user in (1, 2, 3, 4):
+
+        result = 0
+        operator = Calculator().getOperator(option_user)
+
+        system('clear')
         num1 = float(input(screen.substitute(
-            n1='', op='', n2='', commands='Digito o 1º número:'
-        )))
+                n1='',
+                op=operator,
+                n2='',
+                commands='Digito o 1º número:',
+                result=''
+            )))
+
         system('clear')
         print(screen.substitute(
-            n1=num1, op='', n2='', commands=''
+            n1=num1,
+            op=operator,
+            n2='',
+            commands='',
+            result=''
             ))
+
         system('clear')
         num2 = float(input(screen.substitute(
-            n1=num1, op='', n2='', commands='Digito o 2º número:'
-        )))
+                n1=num1,
+                op=operator,
+                n2='',
+                commands='Digito o 2º número:',
+                result=''
+            )))
 
-        if option_user == '1':
-            print(num1, "+", num2, "=", Calculator.add(num1, num2))
+        system('clear')
+        print(screen.substitute(
+            n1=num1,
+            op=operator,
+            n2=num2,
+            commands='',
+            result=''
+            ))
 
-        elif option_user == '2':
-            print(num1, "-", num2, "=", Calculator.subtract(num1, num2))
+        if option_user == 1:
+            result = Calculator().add(num1, num2)
 
-        elif option_user == '3':
-            print(num1, "*", num2, "=", Calculator.multiply(num1, num2))
+        elif option_user == 2:
+            result = Calculator().subtract(num1, num2)
 
-        elif option_user == '4':
-            print(num1, "/", num2, "=", Calculator.divide(num1, num2))
+        elif option_user == 3:
+            result = Calculator().multiply(num1, num2)
+
+        elif option_user == 4:
+            result = Calculator().divide(num1, num2)
+
+        system('clear')
+        print(screen.substitute(
+            n1=num1,
+            op=operator,
+            n2=num2,
+            commands='',
+            result=result
+            ))
 
         # check if user wants another calculation
         # break the while loop if answer is no
-        calculate_again = input("Deseja fazer um novo cálculo (Sim[s] / Não[n]): ")
-        if calculate_again == "n":
+        calculate_again = input("Cálcular novamente? Sim[1] / Não[0]: ")
+
+        if int(calculate_again) == 0:
             break
 
     else:
-        print("Invalid Input")
-#
-#print("\nSelecione o número da operação desejada: \n")
-#print("1 - Soma")
-#print("2 - Subtração")
-#print("3 - Multiplicação")
-#print("4 - Divisão")
-
-#escolha = input("\nDigite sua opção (1/2/3/4): ")
-#
-#num1 = int(input("\nDigite o primeiro número: "))
-#num2 = int(input("\nDigite o segundo número: "))
-
-#if escolha == '1':
-#    print("\n")
-#    print(num1, "+", num2, "=", Calculator.add(num1, num2))
-#    print("\n")
-#
-#elif escolha == '2':
-#    print("\n")
-#    print(num1, "-", num2, "=", subtract(num1, num2))
-#    print("\n")
-#
-#elif escolha == '3':
-#    print("\n")
-#    print(num1, "*", num2, "=", multiply(num1, num2))
-#    print("\n")
-#
-#elif escolha == '4':
-#    print("\n")
-#    print(num1, "/", num2, "=", divide(num1, num2))
-#    print("\n")
-#
-#else:
-#    print("\nOpção Inválida!")
-#
-#
-#
-#print(screen.substitute(n1='3', op='+', n2='4', commands='Example'))
+        print('Opção inválida')
