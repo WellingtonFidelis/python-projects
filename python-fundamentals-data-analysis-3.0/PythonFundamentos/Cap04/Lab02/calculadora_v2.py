@@ -47,3 +47,14 @@ elif escolha == '4':
 
 else:
 	print("\nOpção Inválida!")
+
+screen = """
+''''''''''''''''''''''''''''''
+|||            $n1 $op $n2 |||
+''''''''''''''''''''''''''''''
+Digite:
+    [1] Soma
+    [2] Subtração
+    [3] Multiplicação
+    [4] Divisão
+"""
