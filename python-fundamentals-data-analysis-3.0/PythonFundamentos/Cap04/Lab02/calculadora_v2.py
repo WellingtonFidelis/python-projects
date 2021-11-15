@@ -1,14 +1,23 @@
 # -*- coding: utf-8 -*-
-# Calculadora em Python
+# Calculator with Python
+# at 2021-11
+# By Wellington Fidelis
 
+# To do
+#
+# -[x] Create screen using Template
+# -[x] Create repeating structure
+# -[x] Create rules to call operations
+# -[x] Create class Calculator
+# -[x] Update rules to call operations adding class method of Calculator
+# -[x] Commit code
+
+# Imports
 from string import Template
 from os import system
 
 
 class Calculator():
-    def __init__(self):
-        pass
-
     def add(self, digit1, digit2):
         result = digit1 + digit2
         return result
@@ -36,28 +45,28 @@ class Calculator():
 
 
 screen = Template("""
-''''''''''''''''''''''''''''''
-$n1 $op $n2 = $result
-''''''''''''''''''''''''''''''
-Digite:
-    [1] Soma
-    [2] Subtração
-    [3] Multiplicação
-    [4] Divisão
-''''''''''''''''''''''''''''''
-$commands
-""")
+        ''''''''''''''''''''''''''
+        $n1 $op $n2 = $result
+        ''''''''''''''''''''''''''
+        Digite:
+            [1] Soma
+            [2] Subtração
+            [3] Multiplicação
+            [4] Divisão
+        ''''''''''''''''''''''''''
+        $commands
+        """)
 
 while True:
 
     system('clear')
 
     option_user = input(screen.substitute(
-            n1='',
-            op='',
-            n2='',
-            commands='Escolha uma opção.',
-            result=''
+        n1='',
+        op='',
+        n2='',
+        commands='Escolha uma opção.',
+        result=''
         ))
 
     if option_user in (1, 2, 3, 4):
@@ -66,15 +75,17 @@ while True:
         operator = Calculator().getOperator(option_user)
 
         system('clear')
+
         num1 = float(input(screen.substitute(
-                n1='',
-                op=operator,
-                n2='',
-                commands='Digito o 1º número:',
-                result=''
+            n1='',
+            op=operator,
+            n2='',
+            commands='Digite o 1º número:',
+            result=''
             )))
 
         system('clear')
+
         print(screen.substitute(
             n1=num1,
             op=operator,
@@ -84,15 +95,17 @@ while True:
             ))
 
         system('clear')
+
         num2 = float(input(screen.substitute(
-                n1=num1,
-                op=operator,
-                n2='',
-                commands='Digito o 2º número:',
-                result=''
+            n1=num1,
+            op=operator,
+            n2='',
+            commands='Digite o 2º número:',
+            result=''
             )))
 
         system('clear')
+
         print(screen.substitute(
             n1=num1,
             op=operator,
@@ -114,6 +127,7 @@ while True:
             result = Calculator().divide(num1, num2)
 
         system('clear')
+
         print(screen.substitute(
             n1=num1,
             op=operator,
@@ -122,12 +136,10 @@ while True:
             result=result
             ))
 
-        # check if user wants another calculation
-        # break the while loop if answer is no
         calculate_again = input("Cálcular novamente? Sim[1] / Não[0]: ")
 
         if int(calculate_again) == 0:
             break
 
     else:
-        print('Opção inválida')
+        print('Opção inválida!')
