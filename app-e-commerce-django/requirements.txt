@@ -13,3 +13,7 @@ pytest-django==4.1.0
 
 # requirements part 2
 django-widget-tweaks==1.4.8
+
+# requirements part 3
+django-crispy-forms==1.11.0
+django-localflavor==3.0.1
