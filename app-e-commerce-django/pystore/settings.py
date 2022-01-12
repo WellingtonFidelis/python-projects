@@ -144,7 +144,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # custom statics
-STATICFILES_DIR = [BASE_DIR / "static"]
+STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # showing to django that I am going use my user model
