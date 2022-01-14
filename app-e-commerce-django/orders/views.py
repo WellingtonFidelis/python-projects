@@ -1,8 +1,8 @@
 # from django.shortcuts import render
 # Create your views here.
 
-from django.http import HttpResponseRedirect
-from django.shortcuts import render
+# from django.http import HttpResponseRedirect
+from django.shortcuts import redirect
 from django.urls import reverse
 from django.views.generic import CreateView
 
@@ -28,8 +28,10 @@ class OrderCreateView(CreateView):
                     quantity=item["quantity"],
                 )
             cart.clear()
-            return render(self.request, "orders/order_created.html", {"order": order})
-        return HttpResponseRedirect(reverse("pages:home"))
+            # return render(self.request, "orders/order_created.html", {"order": order})
+            self.request.session["order_id"] = order.id
+            return redirect(reverse("payments:process"))
+        return redirect(reverse("pages:home"))
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
