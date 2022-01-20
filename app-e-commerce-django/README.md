@@ -7,9 +7,9 @@
     <img alt="By Wellington Fidelis" src="https://img.shields.io/badge/made%20by-Wellington%20Fidelis-5965e0">
   </a>
 
-  <img alt="Last Commit" src="https://img.shields.io/github/last-commit/WellingtonFidelis/moveit-next?color=rgb(89,101,224)">
+  <img alt="Last Commit" src="https://img.shields.io/github/last-commit/WellingtonFidelis/python-projects?color=rgb(89,101,224)">
 
-  <img alt="Contributors" src="https://img.shields.io/github/contributors/WellingtonFidelis/moveit-next?color=rgb(89,101,224)">
+  <img alt="Contributors" src="https://img.shields.io/github/contributors/WellingtonFidelis/python-projects?color=rgb(89,101,224)">
 
   <img alt="License" src="https://img.shields.io/badge/license-MIT-%2304D361?color=rgb(89,101,224)">
 </p>
