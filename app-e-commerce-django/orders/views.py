@@ -28,8 +28,7 @@ class OrderCreateView(CreateView):
                     quantity=item["quantity"],
                 )
             cart.clear()
-            ''' return render(self.request, "orders/order_created.html", {"order": order})
-            return HttpResponseRedirect(reverse("pages:home")) '''
+            # return render(self.request, "orders/order_created.html", {"order": order})
             self.request.session["order_id"] = order.id
             return redirect(reverse("payments:process"))
         return redirect(reverse("pages:home"))
