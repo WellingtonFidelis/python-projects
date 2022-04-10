@@ -1,9 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Items list</h2>
 {% if items %}
-    <ul>
+<ul>
     {% for item in items %}
-        <li><a href="/polls/{{ item.description }}/">{{ item.description }}</a></li>
+    <li>
+        <blockquote>
+            <p><strong>{{ item.description }}</strong></p>
+            <footer>Price: R$ {{ item.cost }}</footer>
+        </blockquote>
+    </li>
     {% endfor %}
-    </ul>
+</ul>
 {% else %}
-    <p>No polls are available.</p>
+<p>No polls are available.</p>
 {% endif %}
+{% endblock content %}

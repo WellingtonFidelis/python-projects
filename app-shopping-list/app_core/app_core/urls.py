@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+## from items.views import ItemsView
 
 urlpatterns = [
     path("items/", include("items.urls")),
+    ## path("items/", ItemsView, name="items"),
     path('admin/', admin.site.urls),
 ]

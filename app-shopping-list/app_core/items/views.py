@@ -4,7 +4,7 @@ from django.template import loader
 from items.models import Item
 
 # Create your views here.
-class ViewItems():
+class ItemsView():
   def list(request):
     items = Item.objects.all()
     template = loader.get_template("items/index.html")
