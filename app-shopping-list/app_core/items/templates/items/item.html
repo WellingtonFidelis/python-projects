@@ -1,0 +1,14 @@
+<tr>
+  <th scope="row">{{ forloop.counter }}</th>
+  <td>{{ item.description }}</td>
+  <td>{{ item.cost }}</td>
+    {% if item.is_purchased %}
+    <td><button type="button" class="btn btn-success btn-sm" disabled>Comprado</button></td>
+    {% else %}
+    <td>
+      <form method="PUT" action="/items/item-update/{{ item.id }}">
+          <button type="submit" class="btn btn-primary btn-sm">Comprou?</button>
+      </form>
+    </td>
+    {% endif %}
+</tr>

@@ -19,7 +19,7 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="#">Shopping list App</a>
+      <a class="navbar-brand" href="/items/">Shopping list App</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -27,22 +27,54 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">List</a>
+            <a class="nav-link active" aria-current="page" href="/items/item-create/">Add item</a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="#">Features</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Pricing</a>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>
   </nav>
+
   <div class="container mt-3">
-    {% block content %}
-    {% endblock content %}
+    <div class="row">
+      {% block content %}
+      {% endblock %}
+    </div>
+    <div class="row mt-3">
+      {% if items %}
+      <h2>Items list</h2>
+        <table class="table table-hover" id="tableItemList">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Description</th>
+              <th scope="col">Value (R$)</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in items %}
+              {% include "items/item.html" %}
+            {% endfor %}
+          </tbody>
+          <tfoot>
+            <th scope="col"><strong>Total</strong></th>
+            <th scope="col"></th>
+            <th scope="col">{{ total }}</th>
+            <th scope="col"></th>
+          </tfoot>
+        </table>
+      {% endif %}
+    </div>
   </div>
+
+  <!-- HTMX -->
+  <script src="https://unpkg.com/htmx.org@1.7.0"></script>
 
   <!-- Bootstrap  -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
@@ -51,6 +83,16 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
     integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
     crossorigin="anonymous"></script>
+
+  <script>
+    document.body.addEventListener('htmx:configRequest', (event) => {
+      event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+    });
+
+    //document.body.addEventListener('htmx:afterRequest', (event) => {
+    //  document.querySelector("input.title").value = '';
+    //});
+  </script>
 </body>
 
 </html>
