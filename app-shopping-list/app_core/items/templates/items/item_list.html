@@ -1,32 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>Items list</h2>
 {% if items %}
+<h2>Items list</h2>
 <table class="table table-hover" id="tableItemList">
     <thead>
         <tr>
             <th scope="col">#</th>
             <th scope="col">Description</th>
-            <th scope="col">Value</th>
+            <th scope="col">Value (R$)</th>
             <th scope="col"></th>
         </tr>
     </thead>
     <tbody>
         {% for item in items %}
-        <tr>
-            <th scope="row">{{ forloop.counter }}</th>
-            <td>{{ item.description }}</td>
-            <td>R$ {{ item.cost }}</td>
-            {% if item.is_purchased %}
-            <td><button type="button" class="btn btn-success btn-sm" disabled>Comprado</button></td>
-            {% else %}
-            <td><button type="button" class="btn btn-primary btn-sm">Comprou?</button></td>
-            {% endif %}
-        </tr>
+        {% include "items/item.html" %}
         {% endfor %}
     </tbody>
+    <tfoot>
+        <th scope="col"><strong>Total</strong></th>
+        <th scope="col"></th>
+        <th scope="col">{{ total }}</th>
+        <th scope="col"></th>
+    </tfoot>
 </table>
 {% else %}
-<p>No polls are available.</p>
+<p>No items created</p>
+<p><a href="/items/item-create">Click here</a> to add new item.</p>
 {% endif %}
 {% endblock content %}

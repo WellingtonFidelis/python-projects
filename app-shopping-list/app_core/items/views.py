@@ -27,10 +27,20 @@ class ItemsView():
   
   def list(request):
     items = Item.objects.all()
-    template = "items/item_list.html"
+    
+    total = 0
+    
+    for item in items:
+      if item.is_purchased:
+        total += item.cost
+    
     context = {
-      "items": items
+      "items": items,
+      "total": total
     }
+    
+    template = "items/item_list.html"
+    
     return render(request=request, template_name=template, context=context)
   
   def create(request):

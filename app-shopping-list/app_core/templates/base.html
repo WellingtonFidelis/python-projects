@@ -45,32 +45,6 @@
       {% block content %}
       {% endblock %}
     </div>
-    <div class="row mt-3">
-      {% if items %}
-      <h2>Items list</h2>
-        <table class="table table-hover" id="tableItemList">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Description</th>
-              <th scope="col">Value (R$)</th>
-              <th scope="col"></th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for item in items %}
-              {% include "items/item.html" %}
-            {% endfor %}
-          </tbody>
-          <tfoot>
-            <th scope="col"><strong>Total</strong></th>
-            <th scope="col"></th>
-            <th scope="col">{{ total }}</th>
-            <th scope="col"></th>
-          </tfoot>
-        </table>
-      {% endif %}
-    </div>
   </div>
 
   <!-- HTMX -->
