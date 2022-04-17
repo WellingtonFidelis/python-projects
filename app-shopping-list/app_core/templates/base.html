@@ -40,10 +40,20 @@
     </div>
   </nav>
 
-  <div class="container mt-3">
+  <div class="container mt-4">
     <div class="row">
-      {% block content %}
-      {% endblock %}
+      <div class="col-8">
+        {% block content %}
+        {% endblock %}
+      </div>
+      <div class="col-4">
+        <div class="card shadow bg-body rounded" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Total of bought items</h5>
+            <p class="card-text">R$ {{ total }}</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 

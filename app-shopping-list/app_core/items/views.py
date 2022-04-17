@@ -49,14 +49,18 @@ class ItemsView():
       "cost": 0
     }    
     form = ItemModelForm(request.POST or None, initial=initial_data)    
-    if form.is_valid():
-      Item.objects.create(**form.cleaned_data)
-      form = ItemModelForm()
-      return redirect(reverse("home"))    
+    if request.method == "POST":
+      if form.is_valid():
+        Item.objects.create(**form.cleaned_data)
+        form = ItemModelForm()
+        return redirect(reverse("home"))    
+
     template = "items/item_create.html"    
+
     context = {
       "form": form
     }    
+
     return render(request=request, template_name=template, context=context)
   
   def edit(request, pk):
