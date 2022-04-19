@@ -1,10 +1,11 @@
-from django.urls import path, include
+from django.urls import path
 
-from items.views import ItemsView
+from . import views
 
 urlpatterns = [
-  path("", ItemsView.list, name="home"),
-  path("item-list/", ItemsView.list, name="item-list"),
-  path("item-create/", ItemsView.create, name="item-create"),
-  path("item-update/<int:pk>", ItemsView.edit, name="item-edit"),
+    path("", views.list, name="home"),
+    path("item-list/", views.list, name="item-list"),
+    path("item-create/", views.create, name="item-create"),
+    path("item-update/<int:pk>", views.edit, name="item-edit"),
 ]
+

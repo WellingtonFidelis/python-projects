@@ -47,10 +47,16 @@
         {% endblock %}
       </div>
       <div class="col-4">
-        <div class="card shadow bg-body rounded" style="width: 18rem;">
+        <div class="card shadow bg-body rounded mb-3" style="width: 18rem;">
           <div class="card-body">
-            <h5 class="card-title">Total of bought items</h5>
-            <p class="card-text">R$ {{ total }}</p>
+            <h5 class="card-title">Total value of bought items</h5>
+            <p class="card-text">R$ {{ total_value_items_purchased }}</p>
+          </div>
+        </div>
+        <div class="card shadow bg-body rounded mb-3" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Total value of items to buy</h5>
+            <p class="card-text">R$ {{ total_value_items_to_buy }}</p>
           </div>
         </div>
       </div>

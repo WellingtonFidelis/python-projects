@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <h2>Items create</h2>
-<form method="POST" action="/items/item-create/" class="g-3">
+<form method="POST" action="{% url 'item-create' %}" class="g-3">
   {% csrf_token %}
   {{ form }}
   <div class="row mt-3">

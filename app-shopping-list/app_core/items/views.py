@@ -1,74 +1,76 @@
 from django.shortcuts import render, redirect
+from django.template import loader
 from django.urls import reverse
 from django.http import HttpResponse
-from django.template import loader
 from items.models import Item
 from items.forms import ItemModelForm
 
+
 # Create your views here.
-class ItemsView():
-  def home(request):
+def home(self, request):
     items = Item.objects.all()
-    
-    total = 0
-    
-    for item in items:
-      if item.is_purchased:
-        total += item.cost
-    
+
+    template = loader.get_template("../templates/base.html")
+
     context = {
-      "items": items,
-      "total": total
+        "items": items,
     }
-    
-    template = "../templates/base.html"
-    
-    return render(request=request, template_name=template, context=context)
-  
-  def list(request):
+
+    return HttpResponse(template.render(context, request))
+
+
+def list(request):
     items = Item.objects.all()
-    
-    total = 0
-    
-    for item in items:
-      if item.is_purchased:
-        total += item.cost
-    
+    template = loader.get_template("items/item_list.html")
     context = {
-      "items": items,
-      "total": total
+        "items": items,
+        "total_value_items_purchased": total_value_items_purchased(items),
+        "total_value_items_to_buy": total_value_items_to_buy(items),
     }
-    
-    template = "items/item_list.html"
-    
-    return render(request=request, template_name=template, context=context)
-  
-  def create(request):
+    return HttpResponse(template.render(context, request))
+
+
+def create(request):
     initial_data = {
-      "description": "",
-      "cost": 0
-    }    
-    form = ItemModelForm(request.POST or None, initial=initial_data)    
+        "description": "",
+        "cost": 0
+    }
+    form = ItemModelForm(request.POST or None, initial=initial_data)
     if request.method == "POST":
-      if form.is_valid():
-        Item.objects.create(**form.cleaned_data)
-        form = ItemModelForm()
-        return redirect(reverse("home"))    
+        if form.is_valid():
+            Item.objects.create(**form.cleaned_data)
+            form = ItemModelForm()
+            return redirect(reverse("home"))
 
-    template = "items/item_create.html"    
+    template = loader.get_template("items/item_create.html")
 
     context = {
-      "form": form
-    }    
+        "form": form
+    }
 
-    return render(request=request, template_name=template, context=context)
-  
-  def edit(request, pk):
+    return HttpResponse(template.render(context, request))
+
+
+def edit(request, pk):
     item = Item.objects.get(pk=pk)
     item.is_purchased = True
     item.save()
-    template = "items/item_create.html"
-    context = {
-      "item": item
-    }
-    return redirect(reverse("home")) 
+    return redirect(reverse("home"))
+
+
+def total_value_items_purchased(items):
+    total = 0
+    for item in items:
+        if item.is_purchased:
+            total += item.cost
+
+    return total
+
+
+def total_value_items_to_buy(items):
+    total = 0
+    for item in items:
+        if not item.is_purchased:
+            total += item.cost
+
+    return total
