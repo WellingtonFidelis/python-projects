@@ -110,6 +110,13 @@ ENV/
 env.bak/
 venv.bak/
 
+# Environments app-shopping-list
+app-shopping-list/env/
+app-shopping-list/venv/
+app-shopping-list/ENV/
+app-shopping-list/env.bak/
+app-shopping-list/venv.bak/
+
 # Spyder project settings
 .spyderproject
 .spyproject
