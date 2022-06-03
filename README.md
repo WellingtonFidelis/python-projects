@@ -9,3 +9,5 @@ Repository to improve python about.
 ### 3. [app-e-commerce-django](https://github.com/WellingtonFidelis/python-projects/tree/main/app-e-commerce-django)
   - A app made with Django and using templates views, this is amazing.
   - This project was created by [Fabio Ruicci](<https://www.youtube.com/c/FabioRuicciCursos/playlists>) and I used to improve my way to create web apps.
+### 4. [app-shopping-list](https://github.com/WellingtonFidelis/python-projects/tree/main/app-shopping-list)
+  - This app made to improve my knowledges python about.
