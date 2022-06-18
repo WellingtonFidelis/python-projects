@@ -1,0 +1,25 @@
+{% load static %}
+{% extends 'base.html' %}
+{% block content %}
+<div id="hero-area" class="hero-area-bg">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
+        <div class="contents">
+          <h2 class="head-title">Oops. Erro 400<br>Desculpe, mas algo deu errado</h2>
+          <p>Parece que a página que você está procurando não existe.</p>
+          <div class="header-button">
+            <a href="{% url 'index' %}" class="btn btn-common">Ir para página principal.</i></a>
+            <a href="#" class="btn btn-border video-popup">Saiba mais.</i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
+        <div class="intro-img">
+          <img class="img-fluid" src="{% static 'img/intro-mobile.png' %}" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
