@@ -8,6 +8,19 @@ def get_file_path(_instance, filename):
   filename = f'{uuid.uuid4()}.{ext}'
   return filename
 
+# tupla de tuplas
+ICON_CHOICES = (
+  ('lni-cog', 'Engrenagem'),
+  ('lni-stats-up', 'Gráfico'),
+  ('lni-users', 'Usuários'),
+  ('lni-layers', 'Design'),
+  ('lni-mobile', 'Mobile'),
+  ('lni-rocket', 'Foguete'),
+  ('lni-leaf', 'Folha'),
+  ('lni-layers', 'Camadas'),
+  ('lni-laptop-phone', 'Computador/Smartphone'),
+)
+
 class Base(models.Model):
   created = models.DateField('Created', auto_now_add=True)
   modified = models.DateField('Modified', auto_now=True)
@@ -17,20 +30,10 @@ class Base(models.Model):
     abstract = True
     
     
-class Service(Base):
-  # tupla de tuplas
-  ICON_CHOICES = (
-    ('lni-cog', 'Engrenagem'),
-    ('lni-stats-up', 'Gráfico'),
-    ('lni-users', 'Usuários'),
-    ('lni-layers', 'Design'),
-    ('lni-mobile', 'Mobile'),
-    ('lni-rocket', 'Foguete'),
-  )
-  
+class Service(Base):  
   service = models.CharField('Service', max_length=100)
   description = models.TextField('Description', max_length=200)
-  icon = models.CharField('Icon', max_length=12, choices=ICON_CHOICES)
+  icon = models.CharField('Icon', max_length=20, choices=ICON_CHOICES)
   
   class Meta:
     verbose_name = 'Service'
@@ -70,3 +73,16 @@ class Employee(Base):
     
   def __str__(self):
     return self.name
+  
+
+class Feature(Base):
+  feature = models.CharField('Feature', max_length=100)
+  description = models.TextField('Description', max_length=200)
+  icon = models.CharField('Icon', max_length=20, choices=ICON_CHOICES)
+  
+  class Meta:
+    verbose_name = 'Feature'
+    verbose_name_plural = 'Features'
+    
+  def __str__(self):
+    return self.feature
