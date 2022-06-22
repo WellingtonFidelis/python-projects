@@ -137,3 +137,14 @@ STATIC_ROOT = BASE_DIR /  'staticfiles'
 
 # 
 MEDIA_ROOT = BASE_DIR /  'media'
+
+# Configurations to send mails on not production server
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Configurations to send mails on prodution server
+# EMAIL_HOST = 'localhost'
+# EMAIL_HOST_USER = 'no-reply@teste.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_PASSWORD = 'password of host'
+# DEFAULT_FROM_EMAIL = 'contato@teste.com.br'
