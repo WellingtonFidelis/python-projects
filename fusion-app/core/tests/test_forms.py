@@ -5,7 +5,7 @@ from core.forms import ContactForm
 class ContactFormTestCase(TestCase):
   def setUp(self):
     self.name = 'Wellington'
-    self.email = 'wellingtonf20@gmail.com'
+    self.email = 'test@gmail.com'
     self.subject = 'subject'
     self.message = 'A message.'
     

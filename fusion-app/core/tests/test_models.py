@@ -7,7 +7,7 @@
 import uuid
 from django.test import TestCase
 from model_mommy import mommy
-from core.models import get_file_path, Service, Employee, Role
+from core.models import get_file_path
 
 
 class GetFilePathTestCase(TestCase):
@@ -40,3 +40,11 @@ class EmployeeTestCase(TestCase):
     
   def test_str(self):
     self.assertEquals(str(self.employee), self.employee.name)
+    
+    
+class FeatureTestCase(TestCase):
+  def setUp(self):
+    self.feature = mommy.make('Feature')
+    
+  def test_str(self):
+    self.assertEquals(str(self.feature), self.feature.feature)
