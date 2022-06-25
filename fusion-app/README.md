@@ -1,6 +1,4 @@
-<p align="center">
-  <h1>Loja Python</h1>
-</p>
+# Fusion App
 
 <p align="center">
   <a href="https://github.com/WellingtonFidelis">
