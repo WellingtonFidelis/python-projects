@@ -11,3 +11,5 @@ Repository to improve python about.
   - This project was created by [Fabio Ruicci](<https://www.youtube.com/c/FabioRuicciCursos/playlists>) and I used to improve my way to create web apps.
 ### 4. [app-shopping-list](https://github.com/WellingtonFidelis/python-projects/tree/main/app-shopping-list)
   - This app made to improve my knowledges python about.
+### 5. [fusion-app](https://github.com/WellingtonFidelis/python-projects/tree/main/fusion-app)
+  - This app made as part of course from Udemy and Geek University colege.
